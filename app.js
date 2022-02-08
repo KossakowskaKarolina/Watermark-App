@@ -12,6 +12,8 @@ const addTextWatermarkToImage = async function(inputFile, outputFile, text) {
   };
   image.print(font, 0, 0, textData, image.getWidth(), image.getHeight()); // dodajemy napis - pierwszy argument mówi, z jakiej czcionki korzystamy; drugi i trzeci decydują o umiejscowieniu tekstu; czwarty podaje treść; piąty i szósty szerokość i wysokość obrazka
   await image.quality(100).writeAsync(outputFile); // zapisujemy obrazek jako nowy plik, wartość w quality odpowiada 100%
+  process.stdout.write('Hooray! Watermark was added!');
+  startApp();
 };
 
 const addImageWatermarkToImage = async function(inputFile, outputFile, watermarkFile) { // podobnie jw. ale trzeci parametr otrzymuje ścieżkę do pliku znaku wodnego
@@ -25,6 +27,8 @@ const addImageWatermarkToImage = async function(inputFile, outputFile, watermark
     opacitySource: 0.5,
   });
   await image.quality(100).writeAsync(outputFile);
+  process.stdout.write('Hooray! Watermark was added!');
+  startApp();
 };
 
 const prepareOutputFilename = (filename) => {
